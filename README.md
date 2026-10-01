@@ -1,4 +1,4 @@
-# restore-code-tab-sessions
+# restore-claude-code-tab-sessions-macOS
 
 A macOS script that brings your Claude Code sessions back into the Claude Desktop **Code** tab after you switch accounts, for example from a personal Pro plan to a Team plan.
 
@@ -10,10 +10,10 @@ It also adds sessions you started from the CLI or VS Code, which never showed up
 
 Claude Code keeps your conversations in two places:
 
-| What | Where | Tied to an account? |
-|------|-------|---------------------|
-| **Transcripts** (the actual chat history) | `~/.claude/projects/<encoded-cwd>/<sessionId>.jsonl` | No |
-| **Session cards** (the list the Code tab shows) | `~/Library/Application Support/Claude/claude-code-sessions/<accountId>/<orgId>/local_*.json` | Yes |
+| What                                            | Where                                                                                        | Tied to an account? |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------- | ------------------- |
+| **Transcripts** (the actual chat history)       | `~/.claude/projects/<encoded-cwd>/<sessionId>.jsonl`                                         | No                  |
+| **Session cards** (the list the Code tab shows) | `~/Library/Application Support/Claude/claude-code-sessions/<accountId>/<orgId>/local_*.json` | Yes                 |
 
 Each card points to its transcript through a `cliSessionId` field. When you sign in with a different account or organization, the Desktop app reads cards from a new folder, which starts out empty. Your transcripts are still on disk, but the Code tab has no cards for them, so nothing shows up.
 
@@ -54,16 +54,16 @@ To decide which folder to write to, it checks the account you're signed in with 
 
 ### Options
 
-| Flag | Description |
-|------|-------------|
-| `--dry-run` | Show what would happen without changing anything. |
-| `--existing-only` | Only copy cards that were made in the Desktop Code tab under other accounts. Skip CLI and VS Code sessions. |
-| `--dest <path>` | Write cards to this folder instead of choosing one. |
-| `--list` | List every account/org card folder with its card count, then exit. |
-| `-y`, `--yes` | Don't ask which folder to use. Go with the one the script detects. |
-| `--no-backup` | Skip the backup (not recommended). |
-| `--ignore-running` | Run even if the script thinks Claude Desktop is open. |
-| `-h`, `--help` | Show help. |
+| Flag               | Description                                                                                                 |
+| ------------------ | ----------------------------------------------------------------------------------------------------------- |
+| `--dry-run`        | Show what would happen without changing anything.                                                           |
+| `--existing-only`  | Only copy cards that were made in the Desktop Code tab under other accounts. Skip CLI and VS Code sessions. |
+| `--dest <path>`    | Write cards to this folder instead of choosing one.                                                         |
+| `--list`           | List every account/org card folder with its card count, then exit.                                          |
+| `-y`, `--yes`      | Don't ask which folder to use. Go with the one the script detects.                                          |
+| `--no-backup`      | Skip the backup (not recommended).                                                                          |
+| `--ignore-running` | Run even if the script thinks Claude Desktop is open.                                                       |
+| `-h`, `--help`     | Show help.                                                                                                  |
 
 To point the script at a different card folder (for example, when testing), set the `CLAUDE_SESSIONS_DIR` environment variable.
 
