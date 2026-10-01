@@ -72,3 +72,7 @@ To point the script at a different card folder (for example, when testing), set 
 1. Quit Claude Desktop (Cmd+Q).
 2. In `~/Library/Application Support/Claude/`, delete or rename the `claude-code-sessions` folder.
 3. Rename the `claude-code-sessions_backup_<timestamp>` folder that the script printed to `claude-code-sessions`.
+
+## License
+
+[MIT](LICENSE). This includes the copyright notice from the original [sahol3/claude-code-session-restorer](https://github.com/sahol3/claude-code-session-restorer), as its MIT license requires.
